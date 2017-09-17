@@ -15,6 +15,7 @@ $(document).ready(function() {
 
 function getTodos() {
 	var list = '';
+	var imageUrl = false;
 	$.get(apiUrl+ 'todos').then(function(res) {
 		res.forEach(function(todo){
 			list += `
@@ -22,8 +23,8 @@ function getTodos() {
 					 <div class="col-md-12">
 	                     <h1>`+todo.title+`</h1>
 	                     <div style="width:300px;">`;
-	                     console.log('image',todo.image);
 	                     if(todo.image){
+	                     	imageUrl = todo.image;
 	                     	list += `<img src='/api/attachments/image/download/`+todo.image;
 	                     } else {
 	                     	list += `<img src='http://via.placeholder.com/350x150`;
@@ -34,7 +35,7 @@ function getTodos() {
 	                     </p>
 	                     <div class="col-md-2"><a class="btn btn-primary pull-right marginBottom10" href="#">Share Facebook</a>
 	                     <a class="btn btn-success pull-right marginBottom10" href="#">Share Twitter</a>
-	                      <a class="btn btn-danger pull-right marginBottom10" href="#">Delete Todo</a> </div>
+	                      <a onclick='deleteTodo(`+todo.id+`,"`+imageUrl+`")' class="btn btn-danger pull-right marginBottom10" href="#">Delete Todo</a> </div>
 	                 </div>
                  </div>`;
 		});
@@ -78,7 +79,8 @@ function formHandle(e) {
                 getTodos();
             }
         });
-
+        $title.val('');
+        $body.val('');
     });
 }
 
@@ -98,4 +100,24 @@ function sendFile(file, url) {
         xhr.send(fd);
 
     });
+}
+
+function deleteTodo(id,image) {
+	//console.log('Id',image);
+	$.ajax({
+	    url: apiUrl+'todos/'+id,
+	    type: 'DELETE',
+	    success: function(result) {
+	        if(image != false) {
+				$.ajax({
+	    			url: apiUrl+'attachments/image/files/'+image,
+	    			type: 'DELETE',
+	   				success: function(result) {
+	        			console.log('Yes we did');
+	    			}
+					});
+			}
+	    }
+	});
+	getTodos();
 }
