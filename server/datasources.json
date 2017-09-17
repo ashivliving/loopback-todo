@@ -22,5 +22,11 @@
     "name": "mongoDs",
     "user": "root",
     "connector": "mongodb"
+  },
+  "storage": {
+    "name": "storage",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./files"
   }
 }
