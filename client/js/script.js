@@ -33,8 +33,8 @@ function getTodos() {
 	                     <p style="padding:5px;" class="col-md-5 text-justify">
 	                         `+todo.body+`
 	                     </p>
-	                     <div class="col-md-2"><a class="btn btn-primary pull-right marginBottom10" href="#">Share Facebook</a>
-	                     <a class="btn btn-success pull-right marginBottom10" href="#">Share Twitter</a>
+	                     <div class="col-md-2"><a class="btn btn-primary pull-right marginBottom10" href="http://www.facebook.com/sharer.php?t=`+todo.title+`&u=google.in" target="_blank">Share Facebook</a>
+	                     <a class="btn btn-success pull-right marginBottom10" href="https://twitter.com/intent/tweet?text=`+todo.title+`&url=https://www.actiwate.in" target="_blank">Share Twitter</a>
 	                      <a onclick='deleteTodo(`+todo.id+`,"`+imageUrl+`")' class="btn btn-danger pull-right marginBottom10" href="#">Delete Todo</a> </div>
 	                 </div>
                  </div>`;
