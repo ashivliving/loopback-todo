@@ -36,7 +36,7 @@
     "public": false
   },
   "todo": {
-    "dataSource": "mongoDs",
+    "dataSource": "mysqlDs",
     "public": true
   },
   "attachment": {
