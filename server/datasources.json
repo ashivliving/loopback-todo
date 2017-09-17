@@ -1,0 +1,26 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mysqlDs": {
+    "host": "localhost",
+    "port": 0,
+    "url": "",
+    "database": "actiwate",
+    "password": "Ashiv2424$",
+    "name": "mysqlDs",
+    "user": "root",
+    "connector": "mysql"
+  },
+  "mongoDs": {
+    "host": "localhost",
+    "port": 27017,
+    "url": "",
+    "database": "actiwate",
+    "password": "",
+    "name": "mongoDs",
+    "user": "root",
+    "connector": "mongodb"
+  }
+}
